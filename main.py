@@ -29,9 +29,10 @@ while True:
             text = text.lower()
             print(f'Log: {text}')
 
+
             # If WAKE_WORD is catched continue with command
             if WAKE_WORD in text:
-                engine.say('Hello Nick, what can I do for you today?')
+                engine.say('Hello Nick')
                 engine.runAndWait()
                 command = text.replace(WAKE_WORD, '').strip()
                 if command:
