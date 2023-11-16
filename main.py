@@ -1,5 +1,6 @@
 import speech_recognition
 import pyttsx3
+import command_handler as ch
 
 # Initialize speech recognition and TTS engine
 recognizer = speech_recognition.Recognizer()
@@ -32,13 +33,13 @@ while True:
 
             # If WAKE_WORD is catched continue with command
             if WAKE_WORD in text:
-                engine.say('Hello Nick')
+                engine.say('Hello Nick.')
                 engine.runAndWait()
                 command = text.replace(WAKE_WORD, '').strip()
                 if command:
                     print(f'Command: {command}')
-
-
+                    ch.command_handler(command, engine)
+                    
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()
         continue
