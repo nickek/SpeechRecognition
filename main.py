@@ -15,7 +15,7 @@ engine.setProperty('rate', rate-50)
 volume = engine.getProperty('volume')
 engine.setProperty('volume', volume+0.50)
 
-WAKE_WORD = "hello"
+WAKE_WORD = "hey computer"
 
 while True:
     try:
@@ -25,7 +25,7 @@ while True:
             audio = recognizer.listen(mic)
 
             # Convert audio to text
-            text = recognizer.recognize_google(audio)
+            text = recognizer.recognize_whisper(audio)
             text = text.lower()
             print(f'Log: {text}')
 
