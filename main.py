@@ -1,6 +1,7 @@
 import speech_recognition
 import pyttsx3
 import command_handler as ch
+import date_time as dt
 
 # Initialize speech recognition and TTS engine
 recognizer = speech_recognition.Recognizer()
@@ -16,7 +17,7 @@ engine.setProperty('rate', rate-50)
 volume = engine.getProperty('volume')
 engine.setProperty('volume', volume+0.50)
 
-WAKE_WORD = "hey computer"
+WAKE_WORD = "hello computer"
 
 while True:
     try:
@@ -30,7 +31,6 @@ while True:
             text = text.lower()
             print(f'Log: {text}')
 
-
             # If WAKE_WORD is catched continue with command
             if WAKE_WORD in text:
                 engine.say('Hello Nick.')
@@ -39,7 +39,9 @@ while True:
                 if command:
                     print(f'Command: {command}')
                     ch.command_handler(command, engine)
-                    
+                    dt.date(command, engine)
+                    dt.time(command, engine)
+
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()
         continue
