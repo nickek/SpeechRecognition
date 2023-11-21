@@ -39,8 +39,6 @@ while True:
                 if command:
                     print(f'Command: {command}')
                     ch.command_handler(command, engine)
-                    dt.date(command, engine)
-                    dt.time(command, engine)
 
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()
