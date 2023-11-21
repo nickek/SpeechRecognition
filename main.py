@@ -1,5 +1,6 @@
 import speech_recognition
 import pyttsx3
+import datetime
 import command_handler as ch
 
 
@@ -33,8 +34,21 @@ while True:
 
             # If WAKE_WORD is catched continue with command
             if WAKE_WORD in text:
-                engine.say('Hello Nick.')
-                engine.runAndWait()
+                # engine.say('Hello Nick.')
+                # engine.runAndWait()
+                hour = datetime.datetime.now().hour
+                if hour >= 0 and hour < 12:
+                    engine.say("Good Morning")
+                    engine.runAndWait()
+                elif hour >= 12 and hour < 18:
+                    engine.say("Good Afternoon")
+                    engine.runAndWait()
+                elif hour >= 18 and hour < 24:
+                    engine.say("Good evening")
+                    engine.runAndWait()
+                else:
+                    engine.say("Good Night")
+                    engine.runAndWait()
                 command = text.replace(WAKE_WORD, '').strip()
                 if command:
                     print(f'Command: {command}')
